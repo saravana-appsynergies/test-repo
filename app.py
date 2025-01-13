@@ -1,6 +1,14 @@
 import streamlit as st
 from docx import Document
 
+st.title("🎉 Dynamic DOCX Generator 🎉")
+st.markdown("""
+Welcome to the **Dynamic DOCX Generator**! 🌟  
+Fill in the details below to generate a personalized DOCX document.  
+You can customize the name, location, and company in your document template.
+""")
+
+
 # Function to generate docx file with dynamic values
 def generate_docx(name, location, company):
     # Load the existing template
@@ -22,18 +30,18 @@ def generate_docx(name, location, company):
     return file_path
 
 # Streamlit inputs
-name = st.text_input('Enter your name')
-location = st.text_input('Enter the location')
-company = st.text_input('Enter the company name')
+name = st.text_input('📝 Enter your name:')
+location = st.text_input('🌍 Enter the location:')
+company = st.text_input('🏢 Enter the company name:')
 
 # Validation and DOCX generation
-if st.button('Generate DOCX'):
+if st.button('Generate DOCX ✨'):
     if name and location and company:
         docx_file = generate_docx(name, location, company)
-        st.success('DOCX file generated successfully!')
+        st.success('✅ DOCX file generated successfully!')
 
         # Provide download link for the generated DOCX file
         with open(docx_file, "rb") as file:
-            st.download_button("Download DOCX", file, file_name="generated_document.docx")
+            st.download_button("🔽 Download DOCX", file, file_name="generated_document.docx")
     else:
-        st.error("Please fill out all fields!")
+        st.error("⚠️ Please fill out all fields!")
